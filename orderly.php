@@ -44,10 +44,22 @@ function orderly_install()
 {
 }
 
+/**
+ * Runs after Orderly is uninstalled.
+ *
+ * @return void
+ */
+function orderly_uninstall()
+{
+    delete_option(ORDERLY_OPTION_NAME);
+}
+
 // include specific functionality based on the context
 if (is_admin())
 {
     register_activation_hook(dirname(__FILE__) . "/orderly.php", "orderly_install");
+    register_deactivation_hook(dirname(__FILE__) . "/orderly.php", "orderly_uninstall");
+
     include_once ORDERLY_LIBRARY . "/orderly-admin.php";
 }
 
