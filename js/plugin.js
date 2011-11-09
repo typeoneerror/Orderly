@@ -1,6 +1,6 @@
 jQuery(document).ready(function($)
 {
-    $.fn.cptoRefreshPositions = function(){
+    $.fn.orderlyRefreshPositions = function(){
         var $sortable = $(this);
         $(this).find('li span.orderly-index').each(function(index){
             $(this).text((index + 1) + ". ");
@@ -17,6 +17,6 @@ jQuery(document).ready(function($)
         zIndex: 9999
     })
     $sortables.bind('sortupdate', function(event, ui){
-        $(this).cptoRefreshPositions();
+        $(this).orderlyRefreshPositions();
     });
 });
