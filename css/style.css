@@ -1,0 +1,26 @@
+.orderly-items {
+    color:#555;
+    margin:0;
+    padding:0;
+}
+    .orderly-items li {
+        background:white;
+        background:rgba(255, 255, 255, 0.8);
+        border:1px solid #DFDFDF;
+        cursor:move;
+        line-height:1em;
+        margin-bottom:3px;
+        padding:0.6em 1em;
+                border-radius:4px;
+           -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+    }
+    .orderly-items li.ui-state-highlight {
+        background-color:lightYellow;
+        border-color:#E6DB55;
+        height:1em;
+    }
+    .orderly-items li:first-child {
+    }
+    .orderly-items li:last-child {
+    }
