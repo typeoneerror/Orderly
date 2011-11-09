@@ -7,6 +7,7 @@
  */
 
 $post_type = trim($_REQUEST['post_type']);
+if (empty($post_type)) $post_type = 'post';
 $post_type_object = get_post_type_object($post_type);
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST')

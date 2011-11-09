@@ -32,7 +32,8 @@ function orderly_admin_menu()
         {
             $post_type_object = get_post_type_object($post_type);
 
-            $url = "edit.php?post_type={$post_type_object->name}";
+            $url = 'edit.php';
+            if ($post_type != 'post') $url .= "?post_type={$post_type_object->name}";
             $title = __("Order {$post_type_object->labels->name}", ORDERLY_DOMAIN);
             $required_capability = !empty($menu['capability']) ? $menu['capability'] : ORDERLY_DEFAULT_CAPABILITY;
             $menu_slug = "{$post_type}_orderly";
