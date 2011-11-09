@@ -27,7 +27,11 @@ be no other dependencies.
 
 ## Using it
 
-To add manual drag and drop ordering to a post type menu, simple use the
+Installing the plug-in will add a menu to Settings > Orderly in the wp-admin. You can
+select which post types you want to be sortable there. It will display "Post" and "Page" by default
+as well as any types you register with `register_post_type`.
+
+If you'd prefer to use the code directly, to add manual drag and drop ordering to a post type menu, simple use the
 `orderly_register_orderable_post_type` convenience method in your *functions.php* template file.
 
 For example, to make the built-in Pages sortable:
