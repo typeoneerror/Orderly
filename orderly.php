@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 if (!defined('ORDERLY_DEFAULT_CAPABILITY')) define('ORDERLY_DEFAULT_CAPABILITY', 'publish_pages');
 if (!defined('ORDERLY_DOMAIN')) define('ORDERLY_DOMAIN', 'com.typeoneerror.wordpress.orderly');
 if (!defined('ORDERLY_LIBRARY')) define('ORDERLY_LIBRARY', dirname(__FILE__) . "/library");
+if (!defined('ORDERLY_OPTION_NAME')) define('ORDERLY_OPTION_NAME', 'orderly_sortable_post_types');
 if (!defined('ORDERLY_SCRIPT')) define('ORDERLY_SCRIPT', 'orderly_script');
 if (!defined('ORDERLY_STYLE')) define('ORDERLY_STYLE', 'orderly_style');
 
@@ -49,10 +50,30 @@ if (is_admin())
     register_activation_hook(dirname(__FILE__) . "/orderly.php", "orderly_install");
     include_once ORDERLY_LIBRARY . "/orderly-admin.php";
 }
-else
+
+/**
+ * Runs when Orderly initializes after WP is loaded.
+ *
+ * Adds any currently set sortables to the sortable stack.
+ *
+ * @return void
+ */
+function orderly_wp_loaded()
 {
-    include_once ORDERLY_LIBRARY . "/orderly-client.php";
+    global $__orderly_menus;
+
+    $option = get_option(ORDERLY_OPTION_NAME);
+    $options = explode(',', $option);
+
+    foreach($options as $post_type)
+    {
+        if (post_type_exists($post_type) && !isset($__orderly_menus[$post_type]))
+        {
+            orderly_register_orderable_post_type($post_type);
+        }
+    }
 }
+add_action('wp_loaded', 'orderly_wp_loaded');
 
 /**
  * Register a post type as an orderable post type.
@@ -102,4 +123,10 @@ function orderly_unregister_all()
     global $__orderly_menus;
 
     $__orderly_menus = array();
+}
+
+function orderly_get_registered_post_types()
+{
+    global $__orderly_menus;
+    return $__orderly_menus;
 }

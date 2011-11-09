@@ -42,6 +42,7 @@ $loop = new WP_Query(array(
 <div class="wrap">
     <?php screen_icon(); ?>
     <h2><?php echo esc_html(__("Ordering " . esc_html($post_type_object->labels->name), ORDERLY_DOMAIN)); ?></h2>
+
     <?php
     if (!empty($message)):
     ?>

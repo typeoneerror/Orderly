@@ -21,6 +21,12 @@ function orderly_admin_page()
     include_once ORDERLY_LIBRARY . '/orderly-admin-page.php';
 }
 
+// render the orderly options page
+function orderly_options_page()
+{
+    include_once ORDERLY_LIBRARY . '/orderly-options-page.php';
+}
+
 // add new menus to the post types
 function orderly_admin_menu()
 {
@@ -39,10 +45,13 @@ function orderly_admin_menu()
             $menu_slug = "{$post_type}_orderly";
 
             $page = add_submenu_page($url, $title, $title, $required_capability, $menu_slug, 'orderly_admin_page');
+
             add_action('admin_print_styles-' . $page, 'orderly_admin_styles');
             add_action('admin_print_scripts-' . $page, 'orderly_admin_scripts');
         }
     }
+
+    add_options_page(__('Orderly', ORDERLY_DOMAIN), __('Orderly', ORDERLY_DOMAIN), 'manage_options', 'orderly', 'orderly_options_page');
 }
 add_action('admin_menu', 'orderly_admin_menu');
 
