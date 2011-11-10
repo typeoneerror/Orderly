@@ -33,9 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 
 $loop = new WP_Query(array(
     'post_type' => $post_type,
-    'paged'     => $paged,
     'order'     => 'ASC',
     'orderby'   => 'menu_order',
+    'nopaging'  => true,
 ));
 
 ?>
