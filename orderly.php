@@ -137,6 +137,9 @@ function orderly_unregister_all()
     $__orderly_menus = array();
 }
 
+/**
+ * @return array  Currently registered post types.
+ */
 function orderly_get_registered_post_types()
 {
     global $__orderly_menus;
