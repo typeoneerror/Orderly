@@ -67,10 +67,10 @@ $loop = new WP_Query(array(
         <?php
         $i = 1;
         while ($loop->have_posts()) : $loop->the_post(); ?>
-            <li id="orderly-item-<?= the_ID(); ?>" class="<?= ($i % 2 == 0 ? 'alternate ' : ''); ?>ui-state-default">
-                <span class="orderly-index"><?= $i; ?>.</span>
-                <?= the_title(); ?>
-                <input type="hidden" value="<?= the_ID(); ?>" name="orderly_values[]" id="orderly_values_<?= $i; ?>"/>
+            <li id="orderly-item-<?php echo the_ID(); ?>" class="<?php echo ($i % 2 == 0 ? 'alternate ' : ''); ?>ui-state-default">
+                <span class="orderly-index"><?php echo $i; ?>.</span>
+                <?php echo the_title(); ?>
+                <input type="hidden" value="<?php echo the_ID(); ?>" name="orderly_values[]" id="orderly_values_<?php echo $i; ?>"/>
             </li>
         <?php
             $i++;
@@ -87,7 +87,7 @@ $loop = new WP_Query(array(
         <?php _e("There doesn't seem to be any {$label} yet. Click below to add one.", ORDERLY_DOMAIN); ?>
     </p>
     <p>
-        <a href="<?= admin_url("post-new.php?post_type={$post_type}"); ?>" class="button-primary"><?php _e("Add {$post_type_object->labels->singular_name}", ORDERLY_DOMAIN); ?></a>
+        <a href="<?php echo admin_url("post-new.php?post_type={$post_type}"); ?>" class="button-primary"><?php _e("Add {$post_type_object->labels->singular_name}", ORDERLY_DOMAIN); ?></a>
     </p>
     <?php endif; ?>
 </div>

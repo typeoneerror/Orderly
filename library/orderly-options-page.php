@@ -62,9 +62,9 @@ $options = explode(',', $option);
                 if ($post_type_object):
         ?>
             <li>
-                <label for="orderly-sortables-<?= $i; ?>">
-                    <input<?= (in_array($post_type, $options) ? ' checked="checked"' : ''); ?> type="checkbox" name="orderly-sortables[]" value="<?= $post_type; ?>" id="orderly-sortables-<?= $i; ?>"/>
-                    <span><?= $post_type_object->labels->name; ?> (<em><?= $post_type; ?></em>)</span>
+                <label for="orderly-sortables-<?php echo $i; ?>">
+                    <input<?php echo (in_array($post_type, $options) ? ' checked="checked"' : ''); ?> type="checkbox" name="orderly-sortables[]" value="<?php echo $post_type; ?>" id="orderly-sortables-<?php echo $i; ?>"/>
+                    <span><?php echo $post_type_object->labels->name; ?> (<em><?php echo $post_type; ?></em>)</span>
                 </label>
             </li>
         <?php
